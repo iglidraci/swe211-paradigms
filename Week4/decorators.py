@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Callable
 
 
 def function(num):
@@ -16,17 +17,17 @@ def function(num):
         return lambda: 'Bye kids!'  # anonymous function
 
 
-def my_decorator(func):
+def my_decorator(func: Callable):
     def wrapper():
         print("exec sth before actually calling the function.")
         func()
-        print("after the function is called.")
+        print("exec sth after the function is called.")
 
     return wrapper
 
 
 def send_email():
-    print("Dear all")
+    print("Dear all\nWelcome to to SWE211 course!")
 
 
 def during_the_day(func):
@@ -41,9 +42,9 @@ def during_the_day(func):
 
 
 def do_twice(func):
-    def wrapper(*args, **kwargs):
-        func(*args, **kwargs)
-        func(*args, **kwargs)
+    def wrapper(*args):
+        func(*args)
+        func(*args)
     return wrapper
 
 
@@ -52,15 +53,15 @@ def study():
     print("studying ...")
 
 
+@do_twice
+def present_yourself(name, greeting):
+    print(f'{greeting}, I\'m {name}')
+
+
 @during_the_day
 @do_twice
 def take_meds():
     print('taking meds ...')
-
-
-@do_twice
-def present_yourself(name, greeting):
-    print(f'{greeting}, I\'m {name}')
 
 
 def main():
@@ -72,8 +73,8 @@ def main():
     # decorators wrap a function, modifying its behavior.
     # syntactic sugar
     study()
-    take_meds()
     present_yourself('igli', 'hello')
+    take_meds()
 
 
 if __name__ == '__main__':

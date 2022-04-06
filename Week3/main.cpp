@@ -8,9 +8,9 @@ using namespace std;
 int main() {
     int a = 10;
     int b = 20;
-    cout << "Initially a = " << a << " and b = " << b << endl;
+    std::cout << "Initially a = " << a << " and b = " << b << endl;
     foo(&a, &b);
-    cout << "a = " << a << ", b = " << b << endl;
+    std::cout << "a = " << a << ", b = " << b << endl;
     int *aPtr = &a;
     bar(aPtr);
     cout << "a = " << a << endl;
