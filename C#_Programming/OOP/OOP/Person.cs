@@ -8,7 +8,7 @@ namespace OOP
         private int _age;  // Backing store
         public int Age
         {
-            get => _age;
+            get { return _age;}
             set { _age = _age > 0 ? value : 1; }
         }
         public Person(){}
