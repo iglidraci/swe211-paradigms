@@ -1,4 +1,5 @@
 ﻿using System;
+using OOP.Structs;
 
 namespace OOP
 {
@@ -75,6 +76,55 @@ namespace OOP
             piggyBank.MakeWithdrawal(100, DateTime.Now, "Buying cement");
             piggyBank.PerformMonthEndTransactions();
             Console.WriteLine(piggyBank.GetAccountHistory());
+            TestStructs();
+            int a = 1;
+            // An argument that is passed to a ref
+            // parameter must be initialized before it is passed
+            // This requirement differs from out parameters, whose arguments
+            // don't have to be explicitly initialized before they are passed.
+            MutateInt(ref a);
+            Console.WriteLine(a);
+            TestTuples();
+        }
+
+        private static void TestTuples()
+        {
+            (int, int) t1 = (1, 2);
+            Console.WriteLine($"Tuple with elements {t1.Item1} and {t1.Item2}");
+            (int X, int Y) point = (1, 2);
+            Console.WriteLine($"Tuple with elements {point.X} and {point.Y}");
+            var minMax = FindMinMax(new[] { 10, 20, 1, 40 });
+            Console.WriteLine($"Min {minMax.min} and max {minMax.max}");
+        }
+
+        private static (int min, int max) FindMinMax(int[] arr)
+        {
+            int min = Int32.MaxValue;
+            int max = Int32.MinValue;
+            foreach (var nr in arr)
+            {
+                if (nr > max)
+                    max = nr;
+                if (nr < min)
+                    min = nr;
+            }
+
+            return (min, max);
+        }
+
+        private static void MutateInt(ref int b)
+        {
+            b++;
+        }
+
+        private static void TestStructs()
+        {
+            var p1 = new Coords(0, 0);
+            var p2 = p1;
+            p2.Y = 1;
+            Console.WriteLine(p1);
+            Console.WriteLine(p2);
+            Console.WriteLine(p1 is Coords);
         }
     }
 }
