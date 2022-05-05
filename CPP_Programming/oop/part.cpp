@@ -17,6 +17,16 @@ public:
     }
 };
 
+class Bar {
+private:
+    unsigned int count;
+public:
+    Bar(unsigned int c) : count(c) {};
+    unsigned int get_count() const {
+        return count;
+    }
+};
+
 class Counter {
 private:
     unsigned int count;
@@ -35,10 +45,53 @@ public:
     void increment(Counter other) {
         count += other.get_count();
     }
+
     unsigned int get_count() {
         return count;
     }
     void decrement();
+
+    /*operator overloading*/
+    // prefix
+    void operator ++ () {
+        // operator is used to overload the ++ operator in this declarator
+        count++;
+    }
+    // postfix
+    // int in parentheses isn’t really an argument, and it doesn't mean integer
+    // int is chosen to indicate postfix
+    void operator ++(int) {
+        count++;
+    }
+    Counter operator --() {
+        count--;
+        return Counter(count); // Nameless Temporary Objects
+    }
+    Counter operator + (Counter other) const {
+        return Counter(count + other.get_count());
+    }
+    bool operator < (Counter other) const {
+        return count < other.count;
+    }
+    void operator += (Counter other) {
+        count += other.get_count();
+    }
+
+    /*
+     * data conversion
+     * */
+    // user-defined data type to basic types
+    // these are called conversion operators
+    operator int() const {
+        return count;
+    }
+    // Basic to User-Defined we use a constructor with one argument
+    // These are sometimes called conversion constructors. (we already have one here)
+
+    // Conversions Between Objects of Different Classes
+    operator Bar() const {
+        return Bar(count);
+    }
 };
 
 // :: scope resolution operator
@@ -73,5 +126,21 @@ int main()
     Counter c3 = c1;
     c3.decrement();
     cout << "c1 = " << c1.get_count() << " , c3 = " << c3.get_count() << endl;
+    ++c1;
+    cout << "c1 = " << c1.get_count() << endl;
+    Counter c4 = --c1;
+    cout << "c1 = " << c1.get_count() << " , c4 = " << c4.get_count() << endl;
+    Counter c5 = c1+c2;
+    cout << "c5 = " << c5.get_count()<<endl;
+    if (c1 < c2) cout << "c1 less than c2\n";
+    else cout << " c2 >= c2\n";
+    c1 += c4;
+    cout << "c1 = " << c1.get_count() << endl;
+    int counter1 = c1;
+    cout << "counter1 = " << counter1 << endl;
+    Counter c6 = 10;
+    cout << "c6 = " << c6.get_count() << endl;
+    Bar bar = c6;
+    cout << "bar = " << bar.get_count() << endl;
     return 0;
 }
