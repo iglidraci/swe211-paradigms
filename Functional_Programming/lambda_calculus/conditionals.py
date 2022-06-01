@@ -1,4 +1,5 @@
-from data import *
+from numbers import zero, one
+from bool import true, false
 
 is_zero = lambda x: x(lambda y: false)(true)
 

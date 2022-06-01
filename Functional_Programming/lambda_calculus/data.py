@@ -1,5 +1,5 @@
-from bool import *
-from numbers import *
+from bool import true, false
+from numbers import successor, zero, one, two, three, increment
 
 # A pair (a, b) can be represented in λ-calculus using function (λz.zab)
 build = lambda x: lambda y: lambda s: s(x)(y)   # like a tuple

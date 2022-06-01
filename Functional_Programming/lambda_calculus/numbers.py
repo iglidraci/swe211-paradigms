@@ -9,35 +9,47 @@ increment = lambda x: x + 1     # illegal in terms of lambda calculus, just as a
 
 # if we apply function zero to any function, it will behave as identity function
 identity = zero(increment)  # zero doesn't care about the first arg, it will always return the second arg
-print(identity(0), identity(1))
-increment_one = one(increment)
-print(increment_one(1), increment_one(4))
-increment_twice = two(increment)
-print(increment_twice(3))
 
-successor = lambda w: (lambda y: lambda x: y(w(y)(x)))
+increment_one = one(increment)
+
+increment_twice = two(increment)
+
+successor = lambda w: (lambda y: lambda x: y(w(y)(x))) # w(y)(x) is the old number
 
 # successor of function zero should be the function one
 new_one = successor(zero)
 new_increment_one = new_one(increment_one)
-print(new_increment_one(100) == increment_one(100))
+
 
 # successor of function new_one should be the function two
 new_two = successor(new_one)
 new_increment_twice = new_two(increment)
-print(new_increment_twice(22) == increment_twice(22))
+
 
 three = successor(new_two)
 increment_thrice = three(increment)
-print(increment_thrice(301))
+
 
 new_three = successor(successor(successor(zero)))
 new_increment_thrice = new_three(increment)
-print(increment_thrice(200) == new_increment_thrice(200))
 
 
 weird = three(three)
-print(weird(increment)(0))
+
 
 LAMBDAS = lambda x: 'λ'+x
-print(three(LAMBDAS)(''))
+
+
+if __name__ == "__main__":
+    print(identity(0), identity(1))
+    print(increment_one(1), increment_one(4))
+    print(increment_twice(3))
+    # successor
+    print(new_increment_one(100) == increment_one(100))
+    print(new_increment_twice(22) == increment_twice(22))
+    print(increment_thrice(301))
+    print(increment_thrice(200) == new_increment_thrice(200))
+    # what could be the result
+    print(weird(increment)(0))
+    print(three(LAMBDAS)(''))
+    
