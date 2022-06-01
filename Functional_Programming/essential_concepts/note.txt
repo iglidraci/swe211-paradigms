@@ -1,0 +1,6 @@
+We'll look at each of the following functional programming topics:
+- First-class and higher-order functions, aka pure functions.
+- Immutable data.
+- Strict and lazy evaluation.
+- Recursion instead of an explicit loop state.
+- Functional type systems.
