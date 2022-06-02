@@ -1,0 +1,6 @@
+This directory will present several Python features from a functional viewpoint, as follows:
+- Pure functions, free of side effects
+- Functions as objects that can be passed as arguments or returned as results
+- The use of Python strings using object-oriented suffix notation and prefix notation
+- Using tuples and named tuples as a way to create stateless objects
+- Using iterable collections as our primary design tool for functional programming
