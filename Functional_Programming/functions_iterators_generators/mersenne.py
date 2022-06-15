@@ -24,11 +24,10 @@ def multiply(x: int) -> int:
 
 def faster(x: int) -> int:
     if x == 0: return 1
-    result = faster(x//2)
     if x % 2 == 0:
-        return result * result
+        return (y:=faster(x//2)) * y
     else:
-        return 2 * result * result
+        return (y:=faster(x//2)) * y * 2
 
 
 m1 = Mersenne(shifty)

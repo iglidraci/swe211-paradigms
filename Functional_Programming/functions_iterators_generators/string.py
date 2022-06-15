@@ -1,7 +1,3 @@
-from decimal import Decimal
-from typing import Optional
-
-
 def remove(text: str, chars: str) -> str:
     '''
     This function will recursively remove each of the characters from chars
