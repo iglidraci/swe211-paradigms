@@ -4,29 +4,15 @@ from typing import Any, Callable, Iterable, Iterator
 first = lambda x: x[0]
 
 def my_map(data: Iterable[Any], f: Callable[[Any], Any]) -> Iterator[Any]:
-    if data:
-        yield f(first(data))
-        yield from my_map(data[1:], f)
+    pass
 
 
 def my_filter(data: Iterable[Any], f: Callable[[Any], bool]) -> Iterator[Any]:
-    if data:
-        if f(y := first(data)): yield y
-        yield from my_filter(data[1:], f)
+    pass
 
 
 def my_reduce(data: Iterable[Any], f: Callable[[Any, Any], Any], init: Any = None):
-    def reduce(iterator: Iterator[Any], f, current):
-        try:
-            return reduce(iterator, f, f(current, next(iterator)))
-        except StopIteration:
-            return current
-    iterator = iter(data)
-    try:
-        value = init if init is not None else next(iterator)
-        return reduce(iterator, f, value)
-    except StopIteration:
-        return init
+    pass
 
 
 if __name__ == '__main__':
