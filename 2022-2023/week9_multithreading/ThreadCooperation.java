@@ -58,6 +58,9 @@ public class ThreadCooperation {
             } finally {
                 lock.unlock(); // release the lock
             }
+            /*
+            What would happen if the while loop was changed to an if statement?
+             */
         }
 
         public void deposit(int amount) {
@@ -65,7 +68,7 @@ public class ThreadCooperation {
             try {
                 balance += amount;
                 System.out.println("Deposit " + amount + "\t".repeat(5) + getBalance());
-                // signal thread waiting on the condition
+                // signal threads waiting on the condition
                 newDeposit.signalAll();
             } finally {
                 lock.unlock(); // Release the lock

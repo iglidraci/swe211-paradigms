@@ -16,6 +16,10 @@ public class AccountWithoutSync {
 
         }
         System.out.println("What is balance? " + account.getBalance());
+        /**
+         * The synchronized keyword
+         * Synchronizing statements
+         */
     }
 
     // A thread for adding a penny to the account
@@ -39,7 +43,7 @@ public class AccountWithoutSync {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException ex) {
-
+                ex.printStackTrace();
             }
             balance = newBalance;
         }

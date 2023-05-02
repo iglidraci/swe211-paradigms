@@ -7,7 +7,7 @@ public class ExecutorDemo {
         * Creates a thread pool with a fixed number of threads executing concurrently.
         * A thread may be reused to execute another task after its current task is finished
         * */
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ExecutorService executor = Executors.newFixedThreadPool(3);
         // Submit runnable tasks to the executor
         executor.execute(new PrintChar('a', 1000));
         executor.execute(new PrintChar('b', 1000));
@@ -18,5 +18,10 @@ public class ExecutorDemo {
         * Once shut down, it cannot accept new tasks
         * */
         executor.shutdown();
+
+        /*
+         * What if: ExecutorService executor = Executors.newFixedThreadPool(1);
+         * What if: ExecutorService executor = Executors.newCachedThreadPool();
+         */
     }
 }

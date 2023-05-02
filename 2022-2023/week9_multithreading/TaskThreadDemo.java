@@ -12,9 +12,11 @@ public class TaskThreadDemo {
         thread1.start();
         thread2.start();
         thread3.start();
+        // Invoking run() directly merely executes this method in the same thread
+        // no new thread is started
     }
 }
-
+/**This class provides a framework for printing any single character a given number of times.*/
 class PrintChar implements Runnable {
 
     private final char charToPrint; // the character to print
@@ -33,6 +35,7 @@ class PrintChar implements Runnable {
     }
 }
 
+/**This class provides a framework for printing numbers from 1 to n, for any integer n.*/
 class PrintNum implements Runnable {
     private final int lastNum;
     public PrintNum(int n) {
@@ -41,17 +44,8 @@ class PrintNum implements Runnable {
 
     @Override
     public void run() {
-        Thread thread4 = new Thread(new PrintChar('c', 1000));
-        thread4.start();
         for (int i = 1; i <= lastNum; i++) {
             System.out.print(" " + i);
-            if(i == 50) {
-                try {
-                    thread4.join();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
         }
     }
 }
