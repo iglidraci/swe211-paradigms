@@ -24,7 +24,26 @@ for _ in range(100):
 
 increment_100_times = hundred(increment)
 
+# the only reason why we're using increment(0) is to see the result, so just create a function
+print_nr = lambda x: print(x(increment)(0))   # illegal in lambda calculus but just for simplicity
+
+LAMBDAS = lambda x: 'λ'+x
+
+three = successor(two)
+
+inf = lambda x: x(x)
+
+
 if __name__ == '__main__':
     print(increment_twice(20))
+    print(successor(one)(increment)(0))
+    print(hundred)
+    print_nr(hundred)
+    # inf(inf)  # a lambda function that diverges
     print(new_increment_twice(20))
     print(increment_100_times(1))
+    print_nr(hundred)
+    print(three(LAMBDAS)('a'))
+    print(three(LAMBDAS)('a'))
+    print(three(three)(LAMBDAS)(''))
+    # print_nr(two(three)(two)(two))    # huge number 2**64
