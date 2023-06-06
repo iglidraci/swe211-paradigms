@@ -2,7 +2,6 @@ main = do
     putStrLn "Hello, what's your name?"
     name <- getLine
     putStrLn $ "What's up " ++ name ++ "?"
-    test
 
 {-
 ghci> :t putStrLn
@@ -20,4 +19,7 @@ The last action in a do block, cannot be bound to a name
 
 How do you read name <- getLine?
 perform the I/O action getLine and then bind its result value to name
+
+Is it valid?
+nameTag = "Hello, my name is " ++ getLine
 -}

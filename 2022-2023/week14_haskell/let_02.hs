@@ -3,7 +3,7 @@ import Data.Char
 main = do
     putStrLn "What's your name?"
     name <- getLine
-    putStrLn "When where you born?"
+    putStrLn "When were you born?"
     year <- getLine
     let
         capitalName = map toUpper name

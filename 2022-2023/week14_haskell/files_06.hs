@@ -3,7 +3,7 @@ import System.Directory
 import Data.Char
 import Data.List
 
-main = removeTodo
+main = readPoem
 
 
 {-
@@ -35,6 +35,11 @@ withFile' path mode func = do
     result <- func handle
     hClose handle
     return result
+
+{-
+Just like we have hGetContents that works like getContents but for a specific file,
+there's also hGetLine, hPutStr, hPutStrLn, hGetChar
+-}
 
 
 readPoem'' :: IO ()
