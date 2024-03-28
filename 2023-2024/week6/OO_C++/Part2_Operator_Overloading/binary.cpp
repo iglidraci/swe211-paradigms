@@ -25,51 +25,6 @@ Distance Distance::operator+(Distance d) const {
     }
     return Distance(f, i);
 }
-
-class String { // user-defined string type
-private:
-    static int const CAPACITY = 100;
-    char str[CAPACITY];
-public:
-    String() {
-        strcpy(str, "");
-    }
-    String(char str2[]) {
-        strcpy(str, str2);
-    }
-    void show() {
-        cout << str << endl;
-    }
-    String operator +(String s2) const {
-        String temp;
-        if (strlen(str) + strlen(s2.str) < CAPACITY) {
-            strcpy(temp.str, str);
-            strcat(temp.str, s2.str);
-            return temp;
-        } else {
-            cout << "String overflow" << endl;
-            exit(1);
-        }
-    }
-
-    bool operator == (String s2) const {
-        return strcmp(str, s2.str) == 0;
-    }
-
-    bool operator < (String s2) const {
-        return strcmp(str, s2.str) < 0;
-    }
-
-    // the += operator. Recall that this operator combines assignment and addition into one step
-    void operator += (String s2) {
-        if (strlen(str) + strlen(s2.str) < CAPACITY) {
-            strcat(str, s2.str);
-        } else {
-            cout << "String overflow" << endl;
-            exit(1);
-        }
-    }
-};
 int main() {
     Distance d1(2, 10);
     Distance d2 = Distance(1, 11);
@@ -81,16 +36,5 @@ int main() {
     d3.show_distance();
     Distance d4 = d1 + d2 + d3;
     d4.show_distance();
-
-//    String s1("Hello");
-//    String s2 = " World"; // uses constructor 2
-//    String s3 = s1 + s2;
-//    s3.show();
-//    String s4 = "Hello World";
-//    String s5 = "World";
-//    cout << (s3 == s4) << endl;
-//    cout << (s3 < s5) << endl;
-//    s5 += s2;
-//    s5.show();
     return 0;
 }
