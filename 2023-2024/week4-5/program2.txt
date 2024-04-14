@@ -1,0 +1,12 @@
+(sum + 47) / total
+/*this is a comment*/
+a + b - c
+/*this is a comment*/
+while((sum + 45 / total)){
+    a+b / c + d - e
+    a - c
+    while(a + b) {
+        /*comment*/
+        a - c + 5
+    }
+}
